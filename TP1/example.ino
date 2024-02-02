@@ -20,5 +20,5 @@ void loop()
   digitalWrite(led, LOW); // Turn the LED off (LOW is a value of 0)
   noTone(piezo); // Stop sound... (pin number)
   
-  delay(500); // Wait for 1000 millisecond(s)
+  delay(500); // Wait for 500 millisecond(s)
 }
