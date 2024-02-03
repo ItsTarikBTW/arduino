@@ -1,7 +1,7 @@
-#define TimeDot 100 
+#define TimeDot 200 
 #define TimeDash TimeDot*3
-#define TimeSpaceBC 500 //Between characters
-#define TimeSpaceBW 700 //Between words
+#define TimeSpaceBC TimeDash //Between characters
+#define TimeSpaceBW TimeDot*7 //Between words
 int led;
 int piezo;
 char* input="tarik sos";
