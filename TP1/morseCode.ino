@@ -1,4 +1,4 @@
-#define TimeDot 100 
+#define TimeDot 200 
 #define TimeDash TimeDot*3
 #define TimeSpaceBC TimeDash //Between characters
 #define TimeSpaceBW TimeDot*7 //Between words
