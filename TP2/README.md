@@ -1,11 +1,11 @@
-# Arduino basic circuit
+# Traffic Light Circuit
 
 ![minion][internal-source]
 
 [internal-source]: TP2.png "Circuit View"
 
 
-# Traffic Light Circuit
+# Description
 
 This project simulates a traffic signal circuit using an Arduino board. The circuit consists of three lights: red, yellow, and green, which illuminate sequentially to control traffic flow. The red light indicates stop, the yellow light signals to prepare to stop, and the green light indicates vehicles can proceed.
 
