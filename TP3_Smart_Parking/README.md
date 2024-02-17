@@ -41,7 +41,7 @@ The Smart Parking System project aims to automate parking space management using
 
 ## Footer
 
-This README provides an overview of the second TP (Travaux Pratiques) assignment for the ARDUINO course in the Master 1 Software Engineering program at the University of Tlemcen, during the 2023/2024 academic year.
+This README provides an overview of the third TP (Travaux Pratiques) assignment for the ARDUINO course in the Master 1 Software Engineering program at the University of Tlemcen, during the 2023/2024 academic year.
 
 ## Contributors
 
