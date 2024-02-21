@@ -36,7 +36,7 @@ The Smart Parking System project aims to automate parking space management using
 
 ## Circuit Diagram
 
-![Circuit Diagram](4.png)
+![Circuit Diagram](4-IR.png)
 
 ## Getting Started
 
