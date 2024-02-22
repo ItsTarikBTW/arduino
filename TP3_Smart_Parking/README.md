@@ -37,7 +37,7 @@ The Smart Parking System project aims to automate parking space management using
                 The common pin is connected to the positive voltage (VCC) for common anode displays or to the ground (GND) for common cathode displays. 
             </p>
         </td>
-        <td align="right"><img src="asset/7-segment-display-pinout.png" alt="7-Segment Display" ></td>
+        <td align="right"><img src="asset/7-segment-display-pinout.png" alt="7-Segment Display" height="500" ></td>
     </tr>
 </table>
 
