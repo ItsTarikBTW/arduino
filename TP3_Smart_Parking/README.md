@@ -1,6 +1,6 @@
 # Smart Parking System
 
-![Smart Parking System](prototype.jpg)
+![Smart Parking System](asset/prototype.jpg)
 
 ## Overview
 
@@ -26,17 +26,32 @@ The Smart Parking System project aims to automate parking space management using
 - Jumper wires
 - Breadboard
 
+## 7-Segment Display
+
+<table>
+    <tr>
+        <td valign="top">
+            <h3>Pinout:</h3>
+            <p>
+                the 7-segment display has 10 pins, 8 of which are used to control the individual LED segments (A-G and DP), and the remaining 2 pins are used to control the common anode or cathode.<br/>
+                The common pin is connected to the positive voltage (VCC) for common anode displays or to the ground (GND) for common cathode displays. 
+            </p>
+        </td>
+        <td align="right"><img src="asset/7-segment-display-pinout.png" alt="7-Segment Display" ></td>
+    </tr>
+</table>
+
 ## How it Works
 
 1. **Vehicle Detection:** The LDR sensor detects changes in light intensity caused by vehicles entering or leaving parking spaces.
 2. **Barrier Control:** The Arduino board processes the sensor data and commands the servo motor to open or close the parking barrier accordingly.
 3. **Status Display:** Simultaneously, the Arduino updates the status of the parking space on the 7-segment display, indicating whether it is vacant or occupied.
 4. **Admin Access Control:** The IR sensor detects signals from the IR remote control. The admin can use specific codes to open and close the parking barriers remotely.
-5. **Audible Feedback:** When the admin successfully opens or closes the parking barriers, a buzzer provides auditory feedback.
+1. **Audible Feedback:** When the admin successfully opens or closes the parking barriers, a buzzer provides auditory feedback.
 
 ## Circuit Diagram
 
-![Circuit Diagram](4-IR.png)
+![Circuit Diagram](asset/4-IR.png)
 
 ## Getting Started
 
