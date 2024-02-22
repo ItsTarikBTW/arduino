@@ -33,8 +33,8 @@ The Smart Parking System project aims to automate parking space management using
         <td valign="top">
             <h3>Pinout:</h3>
             <p>
-                the 7-segment display has 10 pins, 8 of which are used to control the individual LED segments (A-G and DP), and the remaining 2 pins are used to control the common anode or cathode.<br/>
-                The common pin is connected to the positive voltage (VCC) for common anode displays or to the ground (GND) for common cathode displays. 
+                the 7-segment display has 10 pins, 8 of which are used to control the individual LED segments <br/>(A-G and DP),and the remaining 2 pins are used to control the common anode or cathode.<br/>
+                The common pin is connected to the positive voltage (VCC) for common anode displays or to <br/>the ground (GND) for common cathode displays. 
             </p>
         </td>
         <td align="right"><img src="asset/7-segment-display-pinout.png" alt="7-Segment Display" width="263" height="500" ></td>
