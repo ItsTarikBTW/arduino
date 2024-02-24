@@ -1,5 +1,10 @@
 #include <Servo.h>
 
+#define ON HIGH // If you are using a common anode display, change this to LOW
+#define OFF LOW // If you are using a common anode display, change this to HIGH
+#define irSize 11
+#define PI_LENGTH 3
+#define PO_LENGTH 3
 
 const int segmentA = 2;
 const int segmentB = 3;
@@ -9,8 +14,8 @@ const int segmentE = 6;
 const int segmentF = 7;
 const int segmentG = 8;
 
-int a0Night = 450;
-int a1Night = 300;
+int a0Night = 240; // Depend on your LDR sensor
+int a1Night = 240; // Depend on your LDR sensor
 int a0Value = 0;
 int a1Value = 0;
 
@@ -18,19 +23,18 @@ int places = 9;
 bool carInput = false;
 bool carOutput = false;
 int buzzer = 11;
-
-Servo s;
-
 int irPin = 10;
 int pinData = 10;
 int key=0;
-int openPassword[3] = {12,24,94};
-int closePassword[3] = {8,28,90};
-String openPasswordValue = "122494";
-String closePasswordValue = "82890";
-String readPassword = "";
 
+int irRow[irSize]={12,16,17,18,20,21,22,24,25,26,14};
+char* irEquivalence[irSize]={"0","1","2","3","4","5","6","7","8","9","reset"};
+char* PASSWORD_I[PI_LENGTH]={"1","2","3"};
+char* PASSWORD_O[PO_LENGTH]={"4","5","6"};
+int indexI=0;
+int indexO=0;
 
+Servo s;
 
 void setup(){
     Serial.begin(9600);
@@ -45,17 +49,15 @@ void setup(){
     places = 9;
     carInput = false;
     carOutput = false;
+    indexI = 0;
+    indexO = 0;
     printNumber(places);
 }
 
 
 void loop(){
-    // while (true) {
-    //   key = getIRKey();
-    //   Serial.println(key);
-    // }
-    
-    while((key = getIRKey()) == 0){
+  
+  while((key = getIRKey()) == 0){
       a0Value = analogRead(A0);
       if (a0Value < a0Night){
           if (places > 0){
@@ -94,111 +96,136 @@ void loop(){
           delay(1000);
       }
     }
+  
+  
+  int press = findIndex(irRow,irSize,key);
+  char* eq=getEquivalence(press);
 
-    int i = 0;
-      while (i < 3) {
-        if(key == 74){
-          readPassword = "";
-          break;
-        }
-        readPassword.concat(key);
-        i++;
-        if(i == 3){
-          break;
-        }
-        while ((key = getIRKey()) == 0) {}
-        Serial.println(key);
-        
-      }
-      if(readPassword == openPasswordValue){
-        Serial.println("Open");
-        s.write(90);
-        readPassword = "";
-        tone(buzzer, 800,1000);
-      }else if (readPassword == closePasswordValue) {
-        Serial.println("Close");
-        s.write(0);
-         tone(buzzer, 500,1000);
-        readPassword = "";
-      }
-      Serial.println(key);
+  if(press != -1){
+    if(press<10){
+    String(eq).equals(String(PASSWORD_I[indexI]))?indexI++ : indexI=0;
+    String(eq).equals(String(PASSWORD_O[indexO]))?indexO++ : indexO=0;
+    }else if(String(eq).equals(String("reset"))){
+      indexI=0;
+      indexO=0;
+      tone(buzzer, 800,200);
+    }
+    Serial.print(key);
+    Serial.print(" : ");
+    Serial.println(press);
+    printNumber(press);
+    if(indexI == PI_LENGTH ){
+      indexI=0;
+      Serial.println("password is correct,THE GATE IS OPENED");
+      s.write(90);
+      printNumber(places);
+      tone(buzzer, 500,200);
+    }
+    if(indexO == PO_LENGTH ){
+      indexO=0;
+      Serial.println("password is correct,THE GATE IS CLOSED");
+      s.write(0);
+      printNumber(places);
+      tone(buzzer, 800,200);
+    }
+  }
+}
+
+int findIndex(int* T,int lentgh,int c) {
+  for (int j = 0; j < lentgh; j++) {
+    if (c == T[j]) {
+      return j;
+    }
+  }
+  return -1;
+}
+
+char* getEquivalence(int index){
+  if(index != -1)
+	return irEquivalence[index];
+  else
+    return "-1";
 }
 
 void turnOfSegments(){
     for (int i = segmentA; i <= segmentG; i++){
-        digitalWrite(i, LOW);
+        digitalWrite(i, OFF);
     }
 }
 
 void print1(){
     turnOfSegments();
-    digitalWrite(segmentB, HIGH);
-    digitalWrite(segmentC, HIGH);
+    digitalWrite(segmentB, ON);
+    digitalWrite(segmentC, ON);
 }
+
 void print2(){
     turnOfSegments();
-    digitalWrite(segmentA, HIGH);
-    digitalWrite(segmentB, HIGH);
-    digitalWrite(segmentG, HIGH);
-    digitalWrite(segmentE, HIGH);
-    digitalWrite(segmentD, HIGH);
+    digitalWrite(segmentA, ON);
+    digitalWrite(segmentB, ON);
+    digitalWrite(segmentG, ON);
+    digitalWrite(segmentE, ON);
+    digitalWrite(segmentD, ON);
 }
+
 void print3(){
     turnOfSegments();
-    digitalWrite(segmentA, HIGH);
-    digitalWrite(segmentB, HIGH);
-    digitalWrite(segmentG, HIGH);
-    digitalWrite(segmentC, HIGH);
-    digitalWrite(segmentD, HIGH);
+    digitalWrite(segmentA, ON);
+    digitalWrite(segmentB, ON);
+    digitalWrite(segmentG, ON);
+    digitalWrite(segmentC, ON);
+    digitalWrite(segmentD, ON);
 }
 
 void print4(){
     turnOfSegments();
-    digitalWrite(segmentF, HIGH);
-    digitalWrite(segmentG, HIGH);
-    digitalWrite(segmentB, HIGH);
-    digitalWrite(segmentC, HIGH);
+    digitalWrite(segmentF, ON);
+    digitalWrite(segmentG, ON);
+    digitalWrite(segmentB, ON);
+    digitalWrite(segmentC, ON);
 }
+
 void print5(){
     turnOfSegments();
-    digitalWrite(segmentA, HIGH);
-    digitalWrite(segmentF, HIGH);
-    digitalWrite(segmentG, HIGH);
-    digitalWrite(segmentC, HIGH);
-    digitalWrite(segmentD, HIGH);
+    digitalWrite(segmentA, ON);
+    digitalWrite(segmentF, ON);
+    digitalWrite(segmentG, ON);
+    digitalWrite(segmentC, ON);
+    digitalWrite(segmentD, ON);
 }
+
 void print6(){
     turnOfSegments();
     for (int i = segmentA; i <= segmentG; i++){
         if (i == segmentB){
-            digitalWrite(i, LOW);
+            digitalWrite(i, OFF);
         }
         else{
-            digitalWrite(i, HIGH);
+            digitalWrite(i, ON);
         }
     }
 }
+
 void print7(){
     turnOfSegments();
-    digitalWrite(segmentA, HIGH);
-    digitalWrite(segmentB, HIGH);
-    digitalWrite(segmentC, HIGH);
+    digitalWrite(segmentA, ON);
+    digitalWrite(segmentB, ON);
+    digitalWrite(segmentC, ON);
 }
 
 void print8(){
     for (int i = segmentA; i <= segmentG; i++){
-        digitalWrite(i, HIGH);
+        digitalWrite(i, ON);
     }
 }
 
-void print9()
-{
+void print9(){
     for (int i = segmentA; i <= segmentG; i++){
         if (i == segmentE){
-            digitalWrite(i, LOW);
+            digitalWrite(i, OFF);
         }
         else{
-            digitalWrite(i, HIGH);
+            digitalWrite(i, ON);
         }
     }
 }
@@ -206,10 +233,10 @@ void print9()
 void print0(){
     for (int i = segmentA; i <= segmentG; i++){
         if (i == segmentG){
-            digitalWrite(i, LOW);
+            digitalWrite(i, OFF);
         }
         else{
-            digitalWrite(i, HIGH);
+            digitalWrite(i, ON);
         }
     }
 }
@@ -228,19 +255,6 @@ void printNumber(int i){
     case 9: print9(); break;
     }
 }
-
-
-boolean checkValueExist(int items[], int value){
-  for (int i = 0; i < 3; i++) {
-    if(items[i] == value){
-      return true;
-    }
-  }
-  return false;
-}
-
-
-
 
 int getIRKey() {
   uint32_t pulseBitValue=0; // Value used for reading the PulseIn() 
