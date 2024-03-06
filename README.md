@@ -6,10 +6,11 @@ This repository contains the code for the TPs of the course ARDUINO for Master 1
 
 ## Table of Contents
 
-- [TP1](TP1/)
-- [TP2](TP2/)
-- [TP3](TP3_Smart_Parking/)
-
+- [TP1 Morse Code](TP1/)
+- [TP2 Traffic Light](TP2/)
+- [TP3 Smart Parking](TP3_Smart_Parking/)
+- [TP4 Elevator](TP4/)
+- [TP4.5 LCD Display](TP4.5/)
 ##
 
 ## License
