@@ -4,6 +4,22 @@ This Arduino sketch implements a color memory game using LEDs, buttons, a buzzer
 
 ![Color Memory Game](assets/memory-game-puzzle.gif)
 
+# Circuit Diagram
+
+## Game 1: Sequential Memory Game
+
+![Sequential Memory Game Circuit Diagram](assets/sequential_memory_game_circuit_diagram.png)
+
+In this variation of the color memory game, players need to remember and reproduce the entire sequence of LEDs that light up in each level. LEDs light up one at a time in a sequence, and players must press the corresponding buttons to reproduce the sequence. The game becomes progressively more challenging as the sequence grows longer with each level.
+
+
+
+## Game 2: Reaction Time Game
+
+![Reaction Time Game Circuit Diagram](assets/reaction_time_game_circuit_diagram.png)
+
+In this variation of the color memory game, players don't need to remember the entire sequence of LEDs. Instead, LEDs light up one at a time in a repeating sequence, and players must quickly respond by pressing the corresponding button for each LED as it lights up. The game speeds up with each level, challenging the player's reaction time.
+
 ## Features
 
 - Generates random sequences of LED colors for players to remember.
@@ -13,28 +29,23 @@ This Arduino sketch implements a color memory game using LEDs, buttons, a buzzer
 
 ## Components Used
 
-- LEDs: Used to represent colors in the game sequence.
-- Buttons: Players press buttons corresponding to the LEDs to repeat the sequence.
-- Buzzer: Provides sound effects, such as the Pirates of the Caribbean theme and game over melody.
-- LCD with I2C: Displays the current level of the game.
+- LEDs: Represent different colors in each game variation.
+- Buttons: Players press buttons corresponding to the LEDs to respond to each game variation's requirements.
+- Buzzer: Provides sound effects for game feedback, such as the Pirates of the Caribbean theme and game over melody.
+- LCD with I2C: Displays the current level of each game variation using I2C communication.
 
-## Circuit Diagram
 
-![Circuit Diagram](assets/circuit.png)
+## Usage
+
+- **Sequential Memory Game**: Remember and reproduce the entire sequence of LEDs that light up in each level by pressing the corresponding buttons.
+- **Reaction Time Game**: Quickly press the corresponding button for each LED as it lights up in a repeating sequence. The game speeds up with each level, challenging your reaction time.
 
 
 ## Setup
 
-1. Connect LEDs, buttons, buzzer, and LCD to your Arduino board according to the pin assignments defined in the code.
-2. Upload the provided Arduino sketch (`color_memory_game.ino`) to your Arduino board using the Arduino IDE or any compatible IDE.
-3. Power up your Arduino board and start playing the color memory game!
-
-## Usage
-
-- When the game starts, LEDs will light up in a sequence. Remember the sequence.
-- Press the corresponding buttons to repeat the sequence.
-- If you repeat the sequence correctly, the level will increase, and the game will become more challenging.
-- If you make a mistake, the game will end, and you can start over automatically.
+1. Connect LEDs, buttons, buzzer, and LCD to your Arduino board according to the pin assignments defined in the code for each game variation.
+2. Upload the provided Arduino sketches (`SequentialMemoryGame.ino` and `ReactionTimeGame.ino`) to your Arduino board using the Arduino IDE or any compatible IDE.
+3. Power up your Arduino board and start playing the color memory games!
 
 
 ## Contributors
@@ -54,3 +65,6 @@ This README provides an overview of the third TP (Travaux Pratiques) assignment 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
+
