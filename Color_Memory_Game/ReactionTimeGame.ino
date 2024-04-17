@@ -10,7 +10,7 @@ LCD_I2C lcd(0x27, 16, 2);
 // Define pins for components
 const int ledPins[] = {4, 6, 8};      // LED pins
 const int buttonPins[] = {3, 5, 7};   // Button pins
-const int onOffButtonPin = 2;         // On/Off button pin             // Buzzer pin
+const int onOffButtonPin = 2;         // On/Off button pin 
 
 const int maxLevel = 30;
 int level = 1;
