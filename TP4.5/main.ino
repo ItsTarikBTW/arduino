@@ -34,6 +34,7 @@ void setup()
         obs[0] += train(obs[0]);
         obs[1] += train(obs[1]);
     }
+    
 }
 
 void loop()
