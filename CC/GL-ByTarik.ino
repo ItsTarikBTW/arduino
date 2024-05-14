@@ -77,7 +77,6 @@ String toBinary(int number){
   for (int i =0; i<7;i++) {
     output=output+String(number%2);
     number=number/2;
-    delay(30);
   }
   return output;
 }
