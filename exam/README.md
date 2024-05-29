@@ -13,7 +13,7 @@ Using 7 LEDs and 2 buttons a buzzer and a light sensor.
 
 ## Note
 
-the pin 7 should be connected to the first LED from the left and so on.
+the pin 7 should be connected to the first LED from the left and so on. if you are using the tarik.ino version.
 
 ## Contributors
 
