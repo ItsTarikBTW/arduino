@@ -16,10 +16,10 @@ Using 7 LEDs and 2 buttons a buzzer and a light sensor.
 the pin 7 should be connected to the first LED from the left and so on. if you are using the tarik.ino version.
 
 ## Contributors
-
+tarik.ino version:
 - [Tarik HAMMOUMI](https://github.com/ItsTarikBTW)
 - [Mohammed Lhadi DIB](https://github.com/Lhadidib07)
 
-special thanks to how designed the circuit:
+bk.ino version plus the circuit diagram:
 - [Abdelhamid KHELLADI](https://github.com/AbdelhamidKHELLADI)
-- Mohammed Eddine Houssam BENDJAFER
+- [Mohammed Eddine Houssam BENDJAFER](https://github.com/VWVWVWVWVWVWVW)
