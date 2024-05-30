@@ -22,4 +22,4 @@ tarik.ino version:
 
 bk.ino version plus the circuit diagram:
 - [Abdelhamid KHELLADI](https://github.com/AbdelhamidKHELLADI)
-- [Mohammed Eddine Houssam BENDJAFER](https://github.com/VWVWVWVWVWVWVW)
+- [Mohammed Houssam Eddine BENDJAFER](https://github.com/VWVWVWVWVWVWVW)
